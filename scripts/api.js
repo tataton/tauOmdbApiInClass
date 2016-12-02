@@ -1,5 +1,3 @@
-console.log( 'js' );
-
 $( document ).ready( function(){
   console.log( 'JQ' );
   $( '#searchButton' ).on( 'click', function(){
@@ -28,11 +26,12 @@ $( document ).ready( function(){
   var displaySearchResults = function( results ){
     console.log( 'in displaySearchResults:', results );
     // loop though the search results and displaying each Title, Year, Poster
-    var outputText = '';
+    var outputText = '<table style="width:100%">\n<tr>\n<th>Title</th>\n<th>Year</th>\n<th>Poster</th>\n</tr>';
     for (var i = 0; i < results.length; i++) {
-      outputText += '<h2>' + results[i].Title + '</h2><p>' + results[i].Year + '</p>';
-      outputText += '<img src="' + results[i].Poster + '" />';
+      outputText += '<tr>\n<td>' + results[i].Title + '</td>\n<td>' + results[i].Year + '</td>\n<td>';
+      outputText += '<img src="' + results[i].Poster + '" height="150"</td>\n</tr>';
     }
+    outputText += '</table>';
     // display in div
     $( '#outputDiv' ).html( outputText );
   }; // end displaySearchResults
